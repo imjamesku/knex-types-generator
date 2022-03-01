@@ -3,8 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateTypes = updateTypes;
 exports.getType = getType;
+exports.updateTypes = updateTypes;
 
 var _camelCase2 = _interopRequireDefault(require("lodash/camelCase"));
 
@@ -82,7 +82,16 @@ async function updateTypes(db, options) {
       const key = (_overrides$value = overrides[value]) !== null && _overrides$value !== void 0 ? _overrides$value : (0, _upperFirst2.default)((0, _camelCase2.default)(value));
       output.write(`  ${key} = "${value}",\n`);
     });
-    output.write("}\n\n"); // Construct TypeScript db record types
+    output.write("}\n\n"); // The list of tables as type
+
+    output.write("export type Tables = {\n");
+    Array.from(tableSet).forEach(key => {
+      var _overrides$key;
+
+      const value = (_overrides$key = overrides[key]) !== null && _overrides$key !== void 0 ? _overrides$key : (0, _upperFirst2.default)((0, _camelCase2.default)(key));
+      output.write(`  "${key}": ${value},\n`);
+    });
+    output.write("};\n\n"); // Construct TypeScript db record types
 
     columns.forEach((x, i) => {
       if (!(columns[i - 1] && columns[i - 1].table === x.table)) {
