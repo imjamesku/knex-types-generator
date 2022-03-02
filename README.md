@@ -32,7 +32,7 @@ Find an example of generated types in [`./main.test.ts`](./main.test.ts).
 ## License
 
 Copyright © 2021-present Kriasoft. This source code is licensed under the MIT license found in the
-[LICENSE](https://github.com/kriasoft/knex-types/blob/main/LICENSE) file.
+[LICENSE](https://github.com/imjamesku/knex-types-generator/blob/main/LICENSE) file.
 
 ---
 

@@ -1,6 +1,6 @@
 {
   "name": "knex-types-generator",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Generates TypeScript definitions (types) from a (PostgreSQL) database schema.",
   "keywords": [
     "database",
@@ -23,9 +23,10 @@
     "email": "jameskutw@gmail.com",
     "url": "https://jamesku.cc"
   },
-  "repository": "kriasoft/knex-types",
+  "repository": "imjamesku/knex-types-generator",
   "contributors": [
-    "Konstantin Tarkus <hello@tarkus.me> (https://tarkus.me/)"
+    "Konstantin Tarkus <hello@tarkus.me> (https://tarkus.me/)",
+    "James Ku <jameskubusiness@gmail.com> (https://jamesku.cc/)"
   ],
   "funding": {
     "type": "patreon",
