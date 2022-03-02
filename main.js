@@ -82,15 +82,18 @@ async function updateTypes(db, options) {
       const key = (_overrides$value = overrides[value]) !== null && _overrides$value !== void 0 ? _overrides$value : (0, _upperFirst2.default)((0, _camelCase2.default)(value));
       output.write(`  ${key} = "${value}",\n`);
     });
-    output.write("}\n\n"); // The list of tables as type
+    output.write("}\n\n"); // declare type bindings for knex
 
-    output.write("export type Tables = {\n");
+    output.write("declare module 'knex/types/tables' {\n"); // The list of tables as type
+
+    output.write("  interface Tables {\n");
     Array.from(tableSet).forEach(key => {
       var _overrides$key;
 
       const value = (_overrides$key = overrides[key]) !== null && _overrides$key !== void 0 ? _overrides$key : (0, _upperFirst2.default)((0, _camelCase2.default)(key));
-      output.write(`  "${key}": ${value},\n`);
+      output.write(`    "${key}": ${value},\n`);
     });
+    output.write("  }\n");
     output.write("};\n\n"); // Construct TypeScript db record types
 
     columns.forEach((x, i) => {

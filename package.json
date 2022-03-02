@@ -1,6 +1,6 @@
 {
-  "name": "knex-types",
-  "version": "0.3.2",
+  "name": "knex-types-generator",
+  "version": "0.3.3",
   "description": "Generates TypeScript definitions (types) from a (PostgreSQL) database schema.",
   "keywords": [
     "database",
@@ -19,9 +19,9 @@
   ],
   "license": "MIT",
   "author": {
-    "name": "Kriasoft",
-    "email": "hello@kriasoft.com",
-    "url": "https://kriasoft.com"
+    "name": "James Ku",
+    "email": "jameskutw@gmail.com",
+    "url": "https://jamesku.cc"
   },
   "repository": "kriasoft/knex-types",
   "contributors": [

@@ -65,7 +65,7 @@ export async function updateTypes(db: Knex, options: Options): Promise<void> {
 
   [
     "// The TypeScript definitions below are automatically generated.\n",
-    "// Do not touch them, or risk, your modifications being lost.\n\n"
+    "// Do not touch them, or risk, your modifications being lost.\n\n",
   ].forEach((line) => output.write(line));
 
   const schema = (typeof options.schema === "string"
@@ -122,7 +122,7 @@ export async function updateTypes(db: Knex, options: Options): Promise<void> {
     const enumsMap = new Map(
       enums.map((x) => [
         x.key,
-        overrides[x.key] ?? upperFirst(camelCase(x.key))
+        overrides[x.key] ?? upperFirst(camelCase(x.key)),
       ])
     );
 
@@ -160,12 +160,15 @@ export async function updateTypes(db: Knex, options: Options): Promise<void> {
     });
     output.write("}\n\n");
 
+    // declare type bindings for knex
+    output.write("declare module 'knex/types/tables' {\n");
     // The list of tables as type
-    output.write("export type Tables = {\n");
+    output.write("  interface Tables {\n");
     Array.from(tableSet).forEach((key) => {
       const value = overrides[key] ?? upperFirst(camelCase(key));
-      output.write(`  "${key}": ${value},\n`);
+      output.write(`    "${key}": ${value},\n`);
     });
+    output.write("  }\n");
     output.write("};\n\n");
 
     // Construct TypeScript db record types

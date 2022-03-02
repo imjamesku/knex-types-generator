@@ -6,8 +6,7 @@
 [![Donate](https://img.shields.io/badge/dynamic/json?color=%23ff424d&label=Patreon&style=flat-square&query=data.attributes.patron_count&suffix=%20patrons&url=https%3A%2F%2Fwww.patreon.com%2Fapi%2Fcampaigns%2F233228)](http://patreon.com/koistya)
 [![Discord](https://img.shields.io/discord/643523529131950086?label=Chat&style=flat-square)](https://discord.gg/bSsv7XM)
 
-An utility module for [Knex.js](https://knexjs.org/) that generates TypeScript
-definitions (types) from a PostgreSQL database schema.
+An utility module for [Knex.js](https://knexjs.org/) that generates [TypeScript definitions](https://knexjs.org/#typescript-support) (types) from a PostgreSQL database schema.
 
 ```
 $ npm install knex
@@ -22,22 +21,13 @@ const { updateTypes } = require("knex-types");
 
 const db = knex(require("./knexfile"));
 
-updateTypes(db, { output: "./types.ts" }).catch((err) => {
+updateTypes(db, { output: "src/types/knex.d.ts" }).catch((err) => {
   console.error(err);
   process.exit(1);
 });
 ```
 
 Find an example of generated types in [`./main.test.ts`](./main.test.ts).
-
-## Related Projects
-
-- [GraphQL API Starter Kit](https://github.com/kriasoft/graphql-starter) — monorepo template, pre-configured with TypeScript, GraphQL.js, React, and Relay
-- [Node.js API Starter Kit](https://github.com/kriasoft/node-starter-kit) — Node.js project template (PostgreSQL, Knex, OAuth 2.0, emails, Cloud Functions)
-
-## How to Contribute
-
-Please create a [PR](https://docs.github.com/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) or send me a message on [Discord](https://discord.gg/bSsv7XM).
 
 ## License
 
